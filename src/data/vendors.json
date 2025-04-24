@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "name": "Mumbai Chaat House",
+    "description": "Famous for spicy chaat near CST.",
+    "type": "Chaat",
+    "rating": 4.5,
+    "openHours": "10 AM - 10 PM",
+    "city": "Mumbai",
+    "location": { "lat": 18.9398, "lng": 72.8355 },
+    "photos": [
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1606491048802-8342506d6471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Pani Puri", "price": 50, "isPopular": true },
+      { "name": "Bhel Puri", "price": 70 },
+      { "name": "Sev Puri", "price": 60 },
+      { "name": "Dahi Puri", "price": 80, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T12:30:00Z", "waitTime": 15, "userId": "user123" },
+      { "time": "2023-07-15T13:15:00Z", "waitTime": 20, "userId": "user456" },
+      { "time": "2023-07-15T18:45:00Z", "waitTime": 30, "userId": "user789" }
+    ],
+    "visitData": [
+      { "hour": 12, "day": 1, "count": 45 },
+      { "hour": 13, "day": 1, "count": 60 },
+      { "hour": 18, "day": 1, "count": 85 },
+      { "hour": 19, "day": 1, "count": 95 },
+      { "hour": 12, "day": 6, "count": 75 },
+      { "hour": 19, "day": 6, "count": 120 }
+    ],
+    "currentWaitTime": 25
+  },
+  {
+    "id": 2,
+    "name": "Delhi Butter Chicken",
+    "description": "Authentic North Indian cuisine.",
+    "type": "North Indian",
+    "rating": 4.7,
+    "openHours": "11 AM - 11 PM",
+    "city": "Mumbai",
+    "location": { "lat": 18.9220, "lng": 72.8330 },
+    "photos": [
+      "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1585937421612-70a008356c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Butter Chicken", "price": 180, "isPopular": true },
+      { "name": "Tandoori Roti", "price": 20 },
+      { "name": "Dal Makhani", "price": 120 },
+      { "name": "Paneer Tikka", "price": 150, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T19:30:00Z", "waitTime": 35, "userId": "user123" },
+      { "time": "2023-07-15T20:15:00Z", "waitTime": 40, "userId": "user456" }
+    ],
+    "visitData": [
+      { "hour": 13, "day": 2, "count": 30 },
+      { "hour": 19, "day": 2, "count": 75 },
+      { "hour": 20, "day": 2, "count": 85 },
+      { "hour": 19, "day": 5, "count": 95 },
+      { "hour": 20, "day": 5, "count": 110 },
+      { "hour": 21, "day": 5, "count": 90 }
+    ],
+    "currentWaitTime": 40
+  },
+  {
+    "id": 3,
+    "name": "South Express Dosa",
+    "description": "Crispy dosas with variety of fillings.",
+    "type": "South Indian",
+    "rating": 4.3,
+    "openHours": "7 AM - 10 PM",
+    "city": "Mumbai",
+    "location": { "lat": 18.9550, "lng": 72.8258 },
+    "photos": [
+      "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1627662058683-b23d4e3a5c16?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Masala Dosa", "price": 100, "isPopular": true },
+      { "name": "Plain Dosa", "price": 60 },
+      { "name": "Idli Sambar", "price": 70 },
+      { "name": "Mysore Masala Dosa", "price": 120, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T08:30:00Z", "waitTime": 15, "userId": "user111" },
+      { "time": "2023-07-15T09:15:00Z", "waitTime": 20, "userId": "user222" }
+    ],
+    "visitData": [
+      { "hour": 8, "day": 3, "count": 65 },
+      { "hour": 9, "day": 3, "count": 50 },
+      { "hour": 19, "day": 3, "count": 40 },
+      { "hour": 8, "day": 0, "count": 85 },
+      { "hour": 9, "day": 0, "count": 90 }
+    ],
+    "currentWaitTime": 15
+  },
+  {
+    "id": 4,
+    "name": "Vaishali Restaurant",
+    "description": "Iconic Pune restaurant famous for its South Indian dishes and filter coffee.",
+    "type": "South Indian",
+    "rating": 4.8,
+    "openHours": "8 AM - 11 PM",
+    "city": "Pune",
+    "location": { "lat": 18.5204, "lng": 73.8567 },
+    "photos": [
+      "https://images.unsplash.com/photo-1625398407796-82650a8c9dd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1607623618478-da7b47ab5de7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Mysore Masala Dosa", "price": 140, "isPopular": true },
+      { "name": "Filter Coffee", "price": 40, "isPopular": true },
+      { "name": "Idli Plate", "price": 80 },
+      { "name": "Medu Vada", "price": 70 }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T10:30:00Z", "waitTime": 45, "userId": "user333" },
+      { "time": "2023-07-15T11:15:00Z", "waitTime": 50, "userId": "user444" },
+      { "time": "2023-07-15T18:45:00Z", "waitTime": 60, "userId": "user555" }
+    ],
+    "visitData": [
+      { "hour": 10, "day": 4, "count": 75 },
+      { "hour": 11, "day": 4, "count": 85 },
+      { "hour": 18, "day": 4, "count": 95 },
+      { "hour": 10, "day": 6, "count": 110 },
+      { "hour": 11, "day": 6, "count": 120 },
+      { "hour": 18, "day": 6, "count": 130 }
+    ],
+    "currentWaitTime": 55
+  },
+  {
+    "id": 5,
+    "name": "JJ Garden Vada Pav",
+    "description": "One of Pune's most famous vada pav stalls with special garlic chutney.",
+    "type": "Maharashtrian",
+    "rating": 4.6,
+    "openHours": "10 AM - 9 PM",
+    "city": "Pune",
+    "location": { "lat": 18.5293, "lng": 73.8421 },
+    "photos": [
+      "https://images.unsplash.com/photo-1606755456206-b25206cde9ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1667412224236-ac15340072cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1582487809094-520072a4dd1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Vada Pav", "price": 30, "isPopular": true },
+      { "name": "Misal Pav", "price": 80 },
+      { "name": "Kothimbir Vadi", "price": 60 },
+      { "name": "Batata Vada", "price": 25, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T12:30:00Z", "waitTime": 10, "userId": "user666" },
+      { "time": "2023-07-15T17:15:00Z", "waitTime": 15, "userId": "user777" }
+    ],
+    "visitData": [
+      { "hour": 12, "day": 5, "count": 50 },
+      { "hour": 13, "day": 5, "count": 45 },
+      { "hour": 17, "day": 5, "count": 65 },
+      { "hour": 18, "day": 5, "count": 70 },
+      { "hour": 12, "day": 0, "count": 80 },
+      { "hour": 17, "day": 0, "count": 90 }
+    ],
+    "currentWaitTime": 12
+  },
+  {
+    "id": 6,
+    "name": "Pune Chat Centre",
+    "description": "Popular destination for chaat lovers with a variety of options.",
+    "type": "Chaat",
+    "rating": 4.2,
+    "openHours": "12 PM - 10 PM",
+    "city": "Pune",
+    "location": { "lat": 18.5150, "lng": 73.8389 },
+    "photos": [
+      "https://images.unsplash.com/photo-1631788012442-633e91f6a877?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1625940092321-d5d9e77f056c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Pani Puri", "price": 50, "isPopular": true },
+      { "name": "Aloo Tikki", "price": 60 },
+      { "name": "Dahi Puri", "price": 70 },
+      { "name": "Papdi Chaat", "price": 80, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T13:30:00Z", "waitTime": 20, "userId": "user888" },
+      { "time": "2023-07-15T18:15:00Z", "waitTime": 30, "userId": "user999" }
+    ],
+    "visitData": [
+      { "hour": 13, "day": 1, "count": 35 },
+      { "hour": 14, "day": 1, "count": 30 },
+      { "hour": 18, "day": 1, "count": 65 },
+      { "hour": 19, "day": 1, "count": 70 },
+      { "hour": 18, "day": 6, "count": 85 },
+      { "hour": 19, "day": 6, "count": 90 }
+    ],
+    "currentWaitTime": 22
+  },
+  {
+    "id": 7,
+    "name": "CTR Malleshwaram",
+    "description": "Famous for its crispy butter dosas and traditional South Indian breakfast.",
+    "type": "South Indian",
+    "rating": 4.7,
+    "openHours": "7:30 AM - 9 PM",
+    "city": "Bangalore",
+    "location": { "lat": 13.0082, "lng": 77.5673 },
+    "photos": [
+      "https://images.unsplash.com/photo-1637831597594-45935ebf6fd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1650831188300-56d166c81752?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1505253473991-ba503bc35615?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Benne Masala Dosa", "price": 120, "isPopular": true },
+      { "name": "Idli Vada", "price": 80 },
+      { "name": "Khara Bath", "price": 60 },
+      { "name": "Filter Coffee", "price": 40, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T08:30:00Z", "waitTime": 40, "userId": "user101" },
+      { "time": "2023-07-15T09:15:00Z", "waitTime": 45, "userId": "user102" },
+      { "time": "2023-07-15T10:45:00Z", "waitTime": 35, "userId": "user103" }
+    ],
+    "visitData": [
+      { "hour": 8, "day": 2, "count": 70 },
+      { "hour": 9, "day": 2, "count": 85 },
+      { "hour": 10, "day": 2, "count": 75 },
+      { "hour": 8, "day": 0, "count": 110 },
+      { "hour": 9, "day": 0, "count": 120 },
+      { "hour": 10, "day": 0, "count": 105 }
+    ],
+    "currentWaitTime": 40
+  },
+  {
+    "id": 8,
+    "name": "VV Puram Food Street",
+    "description": "Famous food street with numerous stalls offering a variety of snacks and sweets.",
+    "type": "Mixed",
+    "rating": 4.5,
+    "openHours": "5 PM - 11 PM",
+    "city": "Bangalore",
+    "location": { "lat": 12.9500, "lng": 77.5833 },
+    "photos": [
+      "https://images.unsplash.com/photo-1515669097368-22e68427d265?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1612502169027-5a379283f6b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Holige/Obbattu", "price": 50, "isPopular": true },
+      { "name": "Gulkand Ice Cream", "price": 70 },
+      { "name": "Akki Roti", "price": 60 },
+      { "name": "Neer Dosa", "price": 80, "isPopular": true }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T18:30:00Z", "waitTime": 25, "userId": "user104" },
+      { "time": "2023-07-15T19:15:00Z", "waitTime": 35, "userId": "user105" },
+      { "time": "2023-07-15T20:45:00Z", "waitTime": 45, "userId": "user106" }
+    ],
+    "visitData": [
+      { "hour": 18, "day": 3, "count": 80 },
+      { "hour": 19, "day": 3, "count": 95 },
+      { "hour": 20, "day": 3, "count": 110 },
+      { "hour": 18, "day": 6, "count": 120 },
+      { "hour": 19, "day": 6, "count": 145 },
+      { "hour": 20, "day": 6, "count": 160 }
+    ],
+    "currentWaitTime": 35
+  },
+  {
+    "id": 9,
+    "name": "Empire Restaurant",
+    "description": "Popular for late-night dining with delicious biryani and kebabs.",
+    "type": "North Indian",
+    "rating": 4.3,
+    "openHours": "11 AM - 1 AM",
+    "city": "Bangalore",
+    "location": { "lat": 12.9716, "lng": 77.5946 },
+    "photos": [
+      "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1633945274405-b6c8069d7d7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1599487489717-41b5df84f8e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    ],
+    "menu": [
+      { "name": "Chicken Biryani", "price": 200, "isPopular": true },
+      { "name": "Butter Naan", "price": 40 },
+      { "name": "Chicken Kebab", "price": 180, "isPopular": true },
+      { "name": "Mutton Biryani", "price": 250 }
+    ],
+    "waitTimeReports": [
+      { "time": "2023-07-15T20:30:00Z", "waitTime": 30, "userId": "user107" },
+      { "time": "2023-07-15T21:15:00Z", "waitTime": 40, "userId": "user108" },
+      { "time": "2023-07-15T22:45:00Z", "waitTime": 20, "userId": "user109" }
+    ],
+    "visitData": [
+      { "hour": 20, "day": 4, "count": 75 },
+      { "hour": 21, "day": 4, "count": 95 },
+      { "hour": 22, "day": 4, "count": 80 },
+      { "hour": 23, "day": 4, "count": 60 },
+      { "hour": 20, "day": 5, "count": 90 },
+      { "hour": 21, "day": 5, "count": 110 },
+      { "hour": 22, "day": 5, "count": 95 },
+      { "hour": 23, "day": 5, "count": 70 }
+    ],
+    "currentWaitTime": 30
+  }
+] 
