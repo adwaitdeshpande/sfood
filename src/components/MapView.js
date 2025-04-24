@@ -281,8 +281,16 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
   // Update local vendors when vendors prop changes
   useEffect(() => {
     if (showNearbyVendors && userLocation) {
-      setLocalVendors(sortVendorsByDistance(vendors, userLocation[0], userLocation[1]));
+      // Sort the current filtered vendors by distance
+      const sortedVendors = sortVendorsByDistance(
+        [...vendors], // Create a copy to avoid mutation
+        userLocation[0], 
+        userLocation[1]
+      );
+      setLocalVendors(sortedVendors);
+      console.log('Effect: Sorted vendors by distance:', sortedVendors.length);
     } else {
+      // Use the original vendors list
       setLocalVendors(vendors);
     }
   }, [vendors, showNearbyVendors, userLocation]);
@@ -351,9 +359,16 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
     setShowNearbyVendors(newState);
     
     if (newState && userLocation) {
-      setLocalVendors(sortVendorsByDistance(vendors, userLocation[0], userLocation[1]));
+      // Apply sorting by distance for the filtered vendors
+      const sortedVendors = sortVendorsByDistance(vendors, userLocation[0], userLocation[1]);
+      setLocalVendors(sortedVendors);
+      
+      // Log for debugging
+      console.log('Sorted vendors by distance:', sortedVendors.length);
     } else {
+      // Reset to original vendors
       setLocalVendors(vendors);
+      console.log('Reset to original vendors:', vendors.length);
     }
   };
   
@@ -504,17 +519,32 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
       
       {/* Location controls */}
       <div className="absolute top-4 right-4 z-[1000] flex flex-col gap-2">
-        {userLocation && (
+        {/* Add location request button if userLocation is not set */}
+        {!userLocation && (
           <button 
-            onClick={toggleNearbyVendors}
-            className={`${showNearbyVendors ? 'bg-blue-600' : 'bg-orange-500'} text-white px-4 py-2 rounded-lg shadow-md hover:opacity-90 flex items-center font-medium`}
-            title="Show vendors sorted by distance from your location"
+            onClick={requestLocation}
+            className="bg-blue-500 text-white px-3 py-1.5 rounded-md shadow-md hover:bg-blue-600 flex items-center text-sm"
+            title="Get your current location"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            {showNearbyVendors ? 'Showing Nearby Vendors' : 'Show Nearby Vendors'}
+            Get Location
+          </button>
+        )}
+        
+        {userLocation && (
+          <button 
+            onClick={toggleNearbyVendors}
+            className={`${showNearbyVendors ? 'bg-blue-600' : 'bg-orange-500'} text-white px-3 py-1.5 rounded-md shadow-md hover:opacity-90 flex items-center text-sm`}
+            title="Show vendors sorted by distance from your location"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            {showNearbyVendors ? 'Nearby' : 'Show Nearby'}
           </button>
         )}
       </div>
