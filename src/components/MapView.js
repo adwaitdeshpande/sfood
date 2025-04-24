@@ -174,11 +174,11 @@ const WaitTimeIndicator = ({ waitTime }) => {
     }
   };
 
-  const { color, text, textColor } = getWaitTimeInfo(waitTime);
+  const { color } = getWaitTimeInfo(waitTime);
 
   return (
-    <div className={`inline-flex items-center justify-center ${color} text-white text-xs px-2 py-1 rounded-full mx-auto`}>
-      {waitTime} min
+    <div className={`inline-flex items-center justify-center ${color} text-white text-xs px-3 py-1 rounded-full mx-auto font-medium`}>
+      {waitTime} min wait
     </div>
   );
 };
@@ -489,22 +489,28 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
                 click: () => setSelectedVendor(vendor),
               }}
             >
-              <Popup>
+              <Popup closeButton={true}>
                 <div className="popup-content">
-                  <h3 className="font-bold text-lg mb-1">{vendor.name}</h3>
-                  <p className="text-sm text-gray-600 mb-1">{vendor.type}</p>
-                  <p className="text-sm text-blue-600 mb-1">{vendor.city}</p>
+                  <h3 className="font-bold">{vendor.name}</h3>
+                  <p className="text-sm text-gray-600">{vendor.type}</p>
+                  <p className="text-sm text-blue-600">{vendor.city}</p>
+                  
                   {vendor.currentWaitTime !== undefined && (
-                    <div className="my-1">
+                    <div className="my-2">
                       <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
                     </div>
                   )}
+                  
                   {userLocation && (
-                    <p className="text-sm text-green-600 mb-2">{getDistanceText(vendor)}</p>
+                    <p className="text-sm text-green-600">{getDistanceText(vendor)}</p>
                   )}
+                  
                   <button 
-                    className="mt-1 px-3 py-1.5 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600 w-full"
-                    onClick={() => handleViewDetails(vendor)}
+                    className="mt-2 px-3 py-1.5 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600 w-full"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent marker click
+                      handleViewDetails(vendor);
+                    }}
                   >
                     View Details
                   </button>
