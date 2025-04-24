@@ -11,7 +11,7 @@
 #   status = 200 
 
 [build]
-  command = "npm run netlify-build"
+  command = "npm install -g typescript && npm run netlify-build"
   publish = "build"
 
 [build.environment]
