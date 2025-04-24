@@ -22,7 +22,7 @@ function CitySelector({ selectedCity, setSelectedCity }) {
           id="city-select"
           value={selectedCity}
           onChange={(e) => setSelectedCity(e.target.value)}
-          className="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-orange-500 focus:border-orange-500 rounded-md"
+          className="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-orange-500 focus:border-orange-500 rounded-md appearance-none"
         >
           {cities.map((city) => (
             <option key={city} value={city}>
