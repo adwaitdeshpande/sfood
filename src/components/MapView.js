@@ -166,19 +166,21 @@ const LocationMarker = ({ onLocationFound }) => {
 const WaitTimeIndicator = ({ waitTime }) => {
   const getWaitTimeInfo = (time) => {
     if (time <= 10) {
-      return { color: 'bg-green-500', text: 'Short wait', textColor: 'text-green-800 dark:text-green-200' };
+      return { color: 'bg-green-500', textColor: 'text-green-600 dark:text-green-400' };
     } else if (time <= 30) {
-      return { color: 'bg-yellow-500', text: 'Moderate wait', textColor: 'text-yellow-800 dark:text-yellow-200' };
+      return { color: 'bg-yellow-500', textColor: 'text-yellow-600 dark:text-yellow-400' };
     } else {
-      return { color: 'bg-red-500', text: 'Long wait', textColor: 'text-red-800 dark:text-red-200' };
+      return { color: 'bg-red-500', textColor: 'text-red-600 dark:text-red-400' };
     }
   };
 
-  const { color } = getWaitTimeInfo(waitTime);
+  const { color, textColor } = getWaitTimeInfo(waitTime);
 
   return (
-    <div className={`inline-flex items-center justify-center ${color} text-white text-xs px-3 py-1 rounded-full mx-auto font-medium`}>
-      {waitTime} min wait
+    <div className="flex items-center justify-center">
+      <div className={`inline-flex items-center justify-center ${color} text-white text-xs px-3 py-1 rounded-full font-medium`}>
+        {waitTime} min
+      </div>
     </div>
   );
 };
@@ -492,21 +494,47 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
               <Popup closeButton={true}>
                 <div className="popup-content">
                   <h3 className="font-bold">{vendor.name}</h3>
-                  <p className="text-sm text-gray-600">{vendor.type}</p>
-                  <p className="text-sm text-blue-600">{vendor.city}</p>
+                  
+                  <div className="w-full mt-1">
+                    <div className="flex items-center justify-between text-xs mb-1">
+                      <span className="text-gray-500 dark:text-gray-400">Category:</span>
+                      <span className="text-gray-600 dark:text-gray-300 font-medium">{vendor.type}</span>
+                    </div>
+                    
+                    <div className="flex items-center justify-between text-xs mb-1">
+                      <span className="text-gray-500 dark:text-gray-400">Location:</span>
+                      <span className="text-blue-600 dark:text-blue-400 font-medium">{vendor.city}</span>
+                    </div>
+                    
+                    {vendor.rating && (
+                      <div className="flex items-center justify-between text-xs mb-1">
+                        <span className="text-gray-500 dark:text-gray-400">Rating:</span>
+                        <span className="text-yellow-500">
+                          {'★'.repeat(Math.round(vendor.rating))}
+                          <span className="text-gray-300 dark:text-gray-600">
+                            {'★'.repeat(5 - Math.round(vendor.rating))}
+                          </span>
+                        </span>
+                      </div>
+                    )}
+                    
+                    {userLocation && (
+                      <div className="flex items-center justify-between text-xs mb-1">
+                        <span className="text-gray-500 dark:text-gray-400">Distance:</span>
+                        <span className="text-green-600 dark:text-green-400 font-medium">{getDistanceText(vendor)}</span>
+                      </div>
+                    )}
+                  </div>
                   
                   {vendor.currentWaitTime !== undefined && (
-                    <div className="my-2">
+                    <div className="my-2 w-full">
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mb-1 text-center">Current Wait Time:</div>
                       <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
                     </div>
                   )}
                   
-                  {userLocation && (
-                    <p className="text-sm text-green-600">{getDistanceText(vendor)}</p>
-                  )}
-                  
                   <button 
-                    className="mt-2 px-3 py-1.5 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600 w-full"
+                    className="mt-3 px-3 py-1.5 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600 w-full font-medium"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent marker click
                       handleViewDetails(vendor);
