@@ -6,8 +6,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 // This will be implemented later
 const SearchBar = ({ searchTerm, setSearchTerm }) => (
   <div className="mt-4">
+    <label 
+      htmlFor="search-input" 
+      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left"
+    >
+      Search Vendors
+    </label>
     <div className="relative">
       <motion.input
+        id="search-input"
         initial={{ width: "90%" }}
         whileFocus={{ width: "100%" }}
         transition={{ duration: 0.3 }}
@@ -205,12 +212,12 @@ function Sidebar({
         className="mb-6"
       >
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-orange-600 dark:text-orange-500 mb-2">
+          <h1 className="text-2xl font-bold text-orange-600 dark:text-orange-500 mb-2 text-left">
             Indian Street Food Locator
           </h1>
           <ThemeToggle />
         </div>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p className="text-gray-600 dark:text-gray-400 text-sm text-left">
           Discover the best street food vendors across India
         </p>
       </motion.div>
@@ -242,7 +249,7 @@ function Sidebar({
       >
         <motion.h2 
           layout
-          className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2 text-left"
         >
           {vendors.length} {vendors.length === 1 ? 'Vendor' : 'Vendors'} Found
         </motion.h2>

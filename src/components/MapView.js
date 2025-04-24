@@ -224,11 +224,11 @@ const WaitTimeReporter = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4 p-3 bg-orange-50 rounded-md">
-      <h3 className="text-sm uppercase text-gray-500 font-semibold mb-2">Report Current Wait Time</h3>
+    <form onSubmit={handleSubmit} className="mt-4 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-md">
+      <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-semibold mb-2 text-left">Report Current Wait Time</h3>
       <div className="flex flex-col space-y-3">
         <div>
-          <label htmlFor="wait-time-slider" className="block text-sm text-gray-600 mb-1">
+          <label htmlFor="wait-time-slider" className="block text-sm text-gray-600 dark:text-gray-400 mb-1 text-left">
             How long is the current wait? ({waitTime} min)
           </label>
           <input
@@ -239,9 +239,9 @@ const WaitTimeReporter = ({ onSubmit }) => {
             step="5"
             value={waitTime}
             onChange={(e) => setWaitTime(parseInt(e.target.value))}
-            className="w-full h-2 bg-orange-100 rounded-lg appearance-none cursor-pointer"
+            className="w-full h-2 bg-orange-100 dark:bg-orange-800/30 rounded-lg appearance-none cursor-pointer"
           />
-          <div className="flex justify-between text-xs text-gray-500 mt-1">
+          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
             <span>5 min</span>
             <span>30 min</span>
             <span>60 min</span>
@@ -475,12 +475,12 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
               }}
             >
               <Popup>
-                <div className="text-center">
+                <div className="text-left">
                   <h3 className="font-bold text-lg">{vendor.name}</h3>
                   <p className="text-sm text-gray-600">{vendor.type}</p>
                   <p className="text-sm text-blue-600">{vendor.city}</p>
                   {vendor.currentWaitTime !== undefined && (
-                    <div className="my-1 flex justify-center">
+                    <div className="my-1 flex">
                       <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
                     </div>
                   )}
@@ -522,7 +522,7 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
       {isModalOpen && modalVendor && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="absolute inset-0 bg-black opacity-50" onClick={() => setIsModalOpen(false)} />
-          <div className="bg-white rounded-lg p-6 max-w-md w-full z-10 relative">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full z-10 relative">
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
@@ -530,56 +530,56 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
               ✕
             </button>
             
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">{modalVendor.name}</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2 text-left">{modalVendor.name}</h2>
             
-            <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full mr-2">
+            <div className="mb-4 text-left">
+              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-800 dark:bg-orange-800/50 dark:text-orange-200 text-sm rounded-full mr-2">
                 {modalVendor.type}
               </span>
-              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-800/50 dark:text-blue-200 text-sm rounded-full">
                 {modalVendor.city}
               </span>
               <div className="mt-1">
                 <span className="text-yellow-500">{'★'.repeat(Math.round(modalVendor.rating))}</span>
-                <span className="text-gray-300">{'★'.repeat(5 - Math.round(modalVendor.rating))}</span>
-                <span className="ml-1 text-sm">({modalVendor.rating.toFixed(1)})</span>
+                <span className="text-gray-300 dark:text-gray-600">{'★'.repeat(5 - Math.round(modalVendor.rating))}</span>
+                <span className="ml-1 text-sm dark:text-gray-300">({modalVendor.rating.toFixed(1)})</span>
               </div>
               {modalVendor.currentWaitTime !== undefined && (
                 <div className="mt-3 flex items-center">
-                  <span className="text-sm uppercase text-gray-500 font-semibold mr-2">Current wait time:</span>
+                  <span className="text-sm uppercase text-gray-500 dark:text-gray-400 font-semibold mr-2">Current wait time:</span>
                   <WaitTimeIndicator waitTime={modalVendor.currentWaitTime} />
                 </div>
               )}
             </div>
             
-            <div className="border-t border-b border-gray-200 py-4 mb-4">
+            <div className="border-t border-b border-gray-200 dark:border-gray-700 py-4 mb-4 text-left">
               <div className="mb-3">
-                <h3 className="text-sm uppercase text-gray-500 font-semibold mb-1">Opening Hours</h3>
-                <p className="text-gray-800">{modalVendor.openHours}</p>
+                <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Opening Hours</h3>
+                <p className="text-gray-800 dark:text-gray-300">{modalVendor.openHours}</p>
               </div>
               
               <div className="mb-3">
-                <h3 className="text-sm uppercase text-gray-500 font-semibold mb-1">Location</h3>
-                <p className="text-gray-800">
+                <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Location</h3>
+                <p className="text-gray-800 dark:text-gray-300">
                   Coordinates: {modalVendor.location.lat.toFixed(4)}, {modalVendor.location.lng.toFixed(4)}
                 </p>
                 {userLocation && (
-                  <p className="text-gray-800 mt-1">
+                  <p className="text-gray-800 dark:text-gray-300 mt-1">
                     Distance: {getDistanceText(modalVendor)}
                   </p>
                 )}
               </div>
             </div>
             
-            <div>
-              <h3 className="text-sm uppercase text-gray-500 font-semibold mb-2">Description</h3>
-              <p className="text-gray-700">{modalVendor.description}</p>
+            <div className="text-left">
+              <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-semibold mb-2">Description</h3>
+              <p className="text-gray-700 dark:text-gray-300">{modalVendor.description}</p>
             </div>
             
             <div className="mt-6 flex justify-end">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md mr-2 hover:bg-gray-200"
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md mr-2 hover:bg-gray-200 dark:hover:bg-gray-600"
               >
                 Close
               </button>
@@ -595,7 +595,6 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
             
             <WaitTimeReporter onSubmit={(submittedWaitTime) => {
               // Handle submitted wait time
-              console.log("Wait time submitted:", submittedWaitTime);
               const updatedVendor = addWaitTimeReport(modalVendor, submittedWaitTime);
               alert(`Thank you for reporting a ${submittedWaitTime} minute wait time for ${updatedVendor.name}!`);
               setIsModalOpen(false);
