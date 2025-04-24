@@ -7,27 +7,38 @@ import ThemeContext from './contexts/ThemeContext';
 
 // Main App component that renders the Indian Street Food Locator
 function App() {
-  // Initialize from localStorage with a default of false if not set
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    return savedMode === 'true';
-  });
+  // Initialize darkMode state with a default value (false)
+  const [darkMode, setDarkMode] = useState(false);
+  
+  // This will safely load the dark mode preference after component mounts
+  useEffect(() => {
+    // Now it's safe to access localStorage
+    try {
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode !== null) {
+        setDarkMode(savedMode === 'true');
+      }
+    } catch (e) {
+      console.error('Error accessing localStorage:', e);
+    }
+  }, []);
   
   // Create a memoized toggle function with useCallback
   const toggleDarkMode = useCallback(() => {
     setDarkMode(prevMode => {
       const newMode = !prevMode;
-      console.log("Toggle dark mode from", prevMode, "to", newMode);
-      // Update localStorage
-      localStorage.setItem('darkMode', String(newMode));
+      try {
+        // Update localStorage
+        localStorage.setItem('darkMode', String(newMode));
+      } catch (e) {
+        console.error('Error setting localStorage:', e);
+      }
       return newMode;
     });
   }, []);
 
   // Apply dark mode class to html element
   useEffect(() => {
-    console.log('Dark mode state is now:', darkMode);
-    
     // Apply or remove dark class on document element
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -37,10 +48,6 @@ function App() {
     
     // Force a reflow to ensure styles are applied
     document.body.style.transition = 'background-color 0.5s, color 0.5s';
-    
-    // Debug information
-    console.log('Dark mode classes applied:', 
-      document.documentElement.classList.contains('dark') ? 'yes' : 'no');
   }, [darkMode]);
 
   // Simple page transition

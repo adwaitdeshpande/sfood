@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { Vendor } from "../types/vendor";
 
 // Fix the Leaflet default icon issue
 // This is a known issue with webpack and Leaflet
@@ -257,6 +258,17 @@ const WaitTimeReporter = ({ onSubmit }) => {
   );
 };
 
+// Client-side only component wrapper
+const ClientOnly = ({ children, fallback = null }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return isClient ? children : fallback;
+};
+
 function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () => {}, onLocationUpdate = () => {} }) {
   const [modalVendor, setModalVendor] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -264,6 +276,7 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
   const [showNearbyVendors, setShowNearbyVendors] = useState(false);
   const [localVendors, setLocalVendors] = useState(vendors);
   const [isRequestingLocation, setIsRequestingLocation] = useState(false);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   
   // Update local vendors when vendors prop changes
   useEffect(() => {
@@ -432,61 +445,62 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
   };
 
   return (
-    <div className="h-full relative">
-      <MapContainer 
-        center={mapCenter} 
-        zoom={zoom} 
-        scrollWheelZoom={true}
-        style={{ height: '100%', width: '100%' }}
-        zoomControl={true}
-        doubleClickZoom={true}
-        attributionControl={true}
-        fadeAnimation={false}
-        markerZoomAnimation={false}
-        animate={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        
-        <LocationMarker onLocationFound={handleLocationFound} />
-        
-        {localVendors.map(vendor => (
-          <Marker 
-            key={vendor.id}
-            position={[vendor.location.lat, vendor.location.lng]}
-            icon={selectedVendor?.id === vendor.id ? selectedIcon : defaultIcon}
-            eventHandlers={{
-              click: () => setSelectedVendor(vendor),
-            }}
-          >
-            <Popup>
-              <div className="text-center">
-                <h3 className="font-bold text-lg">{vendor.name}</h3>
-                <p className="text-sm text-gray-600">{vendor.type}</p>
-                <p className="text-sm text-blue-600">{vendor.city}</p>
-                {vendor.currentWaitTime !== undefined && (
-                  <div className="my-1 flex justify-center">
-                    <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
-                  </div>
-                )}
-                {userLocation && (
-                  <p className="text-sm text-green-600">{getDistanceText(vendor)}</p>
-                )}
-                <button 
-                  className="mt-2 px-3 py-1 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600"
-                  onClick={() => handleViewDetails(vendor)}
-                >
-                  View Details
-                </button>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-        
-        <MapUpdater center={mapCenter} zoom={zoom} selectedVendor={selectedVendor} />
-      </MapContainer>
+    <div className="h-full bg-white dark:bg-gray-800 relative">
+      <ClientOnly fallback={
+        <div className="h-full flex items-center justify-center">
+          <div className="text-lg text-gray-500">Loading map...</div>
+        </div>
+      }>
+        <MapContainer 
+          center={mapCenter} 
+          zoom={zoom} 
+          className="h-full z-0"
+          zoomControl={false}
+          whenReady={() => setIsMapLoaded(true)}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          
+          <LocationMarker onLocationFound={handleLocationFound} />
+          
+          {localVendors.map(vendor => (
+            <Marker 
+              key={vendor.id}
+              position={[vendor.location.lat, vendor.location.lng]}
+              icon={selectedVendor?.id === vendor.id ? selectedIcon : defaultIcon}
+              eventHandlers={{
+                click: () => setSelectedVendor(vendor),
+              }}
+            >
+              <Popup>
+                <div className="text-center">
+                  <h3 className="font-bold text-lg">{vendor.name}</h3>
+                  <p className="text-sm text-gray-600">{vendor.type}</p>
+                  <p className="text-sm text-blue-600">{vendor.city}</p>
+                  {vendor.currentWaitTime !== undefined && (
+                    <div className="my-1 flex justify-center">
+                      <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
+                    </div>
+                  )}
+                  {userLocation && (
+                    <p className="text-sm text-green-600">{getDistanceText(vendor)}</p>
+                  )}
+                  <button 
+                    className="mt-2 px-3 py-1 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600"
+                    onClick={() => handleViewDetails(vendor)}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+          
+          <MapUpdater center={mapCenter} zoom={zoom} selectedVendor={selectedVendor} />
+        </MapContainer>
+      </ClientOnly>
       
       {/* Location controls */}
       <div className="absolute top-4 right-4 z-[1000] flex flex-col gap-2">
