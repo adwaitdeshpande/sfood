@@ -47,16 +47,8 @@ const ThemeToggle = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   
   const handleToggle = () => {
-    console.log('ThemeToggle: Before toggle, darkMode =', darkMode);
-    
-    // Force the toggle to run synchronously
+    // Call toggle function directly without logging
     toggleDarkMode();
-    
-    // Log the current state of html.dark class
-    setTimeout(() => {
-      console.log('ThemeToggle: After toggle, document.documentElement.classList =', 
-        document.documentElement.classList.contains('dark') ? 'dark' : 'not dark');
-    }, 100);
   };
   
   return (

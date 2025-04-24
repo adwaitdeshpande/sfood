@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "patterns": [
+    "node_modules/**",
+    "build/**",
+    ".cache/**",
+    "public/**",
+    ".eslintcache"
+  ]
+} 
