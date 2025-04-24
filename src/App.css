@@ -142,3 +142,55 @@ body, html {
     transform: rotate(360deg);
   }
 }
+
+/* Leaflet Popup Customization */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 18px !important;
+  line-height: 1.6 !important;
+  width: 220px !important;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Dark mode styles for Leaflet popups */
+html.dark .leaflet-popup-content-wrapper {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark .leaflet-popup-tip {
+  background-color: #1f2937 !important;
+}
+
+html.dark .popup-content h3 {
+  color: #f3f4f6 !important;
+}
+
+html.dark .popup-content .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+html.dark .popup-content .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+html.dark .popup-content .text-green-600 {
+  color: #34d399 !important;
+}
+
+html.dark .popup-content button {
+  background-color: #f97316 !important;
+}

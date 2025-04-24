@@ -166,18 +166,18 @@ const LocationMarker = ({ onLocationFound }) => {
 const WaitTimeIndicator = ({ waitTime }) => {
   const getWaitTimeInfo = (time) => {
     if (time <= 10) {
-      return { color: 'bg-green-500', text: 'Short wait', textColor: 'text-green-800' };
+      return { color: 'bg-green-500', text: 'Short wait', textColor: 'text-green-800 dark:text-green-200' };
     } else if (time <= 30) {
-      return { color: 'bg-yellow-500', text: 'Moderate wait', textColor: 'text-yellow-800' };
+      return { color: 'bg-yellow-500', text: 'Moderate wait', textColor: 'text-yellow-800 dark:text-yellow-200' };
     } else {
-      return { color: 'bg-red-500', text: 'Long wait', textColor: 'text-red-800' };
+      return { color: 'bg-red-500', text: 'Long wait', textColor: 'text-red-800 dark:text-red-200' };
     }
   };
 
   const { color, text, textColor } = getWaitTimeInfo(waitTime);
 
   return (
-    <div className={`flex items-center justify-center ${color} text-white text-xs px-2 py-1 rounded-full`}>
+    <div className={`inline-flex items-center justify-center ${color} text-white text-xs px-2 py-1 rounded-full mx-auto`}>
       {waitTime} min
     </div>
   );
@@ -490,20 +490,20 @@ function MapView({ vendors = [], selectedVendor = null, setSelectedVendor = () =
               }}
             >
               <Popup>
-                <div className="text-left">
-                  <h3 className="font-bold text-lg">{vendor.name}</h3>
-                  <p className="text-sm text-gray-600">{vendor.type}</p>
-                  <p className="text-sm text-blue-600">{vendor.city}</p>
+                <div className="popup-content">
+                  <h3 className="font-bold text-lg mb-1">{vendor.name}</h3>
+                  <p className="text-sm text-gray-600 mb-1">{vendor.type}</p>
+                  <p className="text-sm text-blue-600 mb-1">{vendor.city}</p>
                   {vendor.currentWaitTime !== undefined && (
-                    <div className="my-1 flex">
+                    <div className="my-1">
                       <WaitTimeIndicator waitTime={vendor.currentWaitTime} />
                     </div>
                   )}
                   {userLocation && (
-                    <p className="text-sm text-green-600">{getDistanceText(vendor)}</p>
+                    <p className="text-sm text-green-600 mb-2">{getDistanceText(vendor)}</p>
                   )}
                   <button 
-                    className="mt-2 px-3 py-1 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600"
+                    className="mt-1 px-3 py-1.5 bg-orange-500 text-white text-sm rounded-md hover:bg-orange-600 w-full"
                     onClick={() => handleViewDetails(vendor)}
                   >
                     View Details
