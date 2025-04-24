@@ -12,32 +12,29 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => (
     >
       Search Vendors
     </label>
-    <div className="relative">
-      <motion.input
+    <div className="relative flex items-center">
+      <input
         id="search-input"
-        initial={{ width: "90%" }}
-        whileFocus={{ width: "100%" }}
-        transition={{ duration: 0.3 }}
         type="text"
         placeholder="Search vendors by name or food type..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 pr-10"
       />
-      <motion.svg
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.1, rotate: 15 }}
-        className="absolute right-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-500"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fillRule="evenodd"
-          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-          clipRule="evenodd"
-        />
-      </motion.svg>
+      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+        <svg
+          className="h-5 w-5 text-gray-400 dark:text-gray-500"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 );
@@ -136,7 +133,7 @@ const VendorCard = ({ vendor, isSelected, onClick, distanceText }) => {
       onClick={onClick}
     >
       <div className="flex justify-between items-start">
-        <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200">{vendor.name}</h3>
+        <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-200 text-left">{vendor.name}</h3>
         <motion.span 
           whileHover={{ scale: 1.1 }}
           className="px-2 py-1 bg-orange-100 dark:bg-orange-800/50 text-orange-800 dark:text-orange-200 text-xs rounded-full"
@@ -152,7 +149,7 @@ const VendorCard = ({ vendor, isSelected, onClick, distanceText }) => {
         <span className="text-sm text-gray-600 dark:text-gray-400">{vendor.rating.toFixed(1)}</span>
       </div>
       
-      <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 line-clamp-2">
+      <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 line-clamp-2 text-left">
         {vendor.description}
       </p>
       
@@ -250,9 +247,9 @@ function Sidebar({
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center p-4 bg-gray-100 dark:bg-gray-800 rounded-md"
+            className="p-4 bg-gray-100 dark:bg-gray-800 rounded-md"
           >
-            <p className="text-gray-500 dark:text-gray-400">No vendors found. Try a different search or location.</p>
+            <p className="text-gray-500 dark:text-gray-400 text-left">No vendors found. Try a different search or location.</p>
           </motion.div>
         ) : (
           <div className="space-y-4">

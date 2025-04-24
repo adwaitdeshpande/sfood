@@ -11,7 +11,7 @@ function CitySelector({ selectedCity, setSelectedCity }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         htmlFor="city-select" 
-        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left"
       >
         Select Location
       </motion.label>
