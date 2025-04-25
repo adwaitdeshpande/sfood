@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 function CitySelector({ selectedCity, setSelectedCity }) {
-  const cities = ['All Cities', 'Mumbai', 'Pune', 'Bangalore'];
+  const cities = ['All Cities', 'Mumbai', 'Pune', 'Bangalore', 'Delhi', 'Chennai'];
   
   return (
     <div className="mb-4">

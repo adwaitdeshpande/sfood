@@ -38,9 +38,11 @@ const userLocationIcon = L.icon({
 
 // Default city centers
 const cityCenters = {
-  'Mumbai': [18.9387, 72.8353],
+  'Mumbai': [19.0760, 72.8777],
   'Pune': [18.5204, 73.8567],
   'Bangalore': [12.9716, 77.5946],
+  'Delhi': [28.7041, 77.1025],
+  'Chennai': [13.0827, 80.2707],
   'All Cities': [20.5937, 78.9629] // Center of India
 };
 
