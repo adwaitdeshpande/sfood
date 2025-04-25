@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import CitySelector from './CitySelector';
 import ThemeContext from '../contexts/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from './Logo';
 
 // This will be implemented later
 const SearchBar = ({ searchTerm, setSearchTerm }) => (
@@ -201,12 +202,10 @@ function Sidebar({
         className="mb-6"
       >
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-orange-600 dark:text-orange-500 mb-2 text-left">
-            Indian Street Food Locator
-          </h1>
+          <Logo size="large" />
           <ThemeToggle />
         </div>
-        <p className="text-gray-600 dark:text-gray-400 text-sm text-left">
+        <p className="text-gray-600 dark:text-gray-400 text-sm text-left mt-2">
           Discover the best street food vendors across India
         </p>
       </motion.div>
